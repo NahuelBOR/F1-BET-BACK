@@ -69,9 +69,9 @@ router.get('/user/:userId', auth, async (req, res) => {
         // 1. El ID del perfil solicitado es el mismo que el del usuario autenticado (ver sus propias predicciones)
         // O
         // 2. El usuario autenticado es un administrador.
-        if (targetUserId !== requestingUserId && (!requestingUser || !requestingUser.isAdmin)) {
+        /*if (targetUserId !== requestingUserId && (!requestingUser || !requestingUser.isAdmin)) {
             return res.status(403).json({ msg: 'Acceso denegado: No tienes permiso para ver las predicciones de este usuario.' });
-        }
+        }*/
 
         const predictions = await Prediction.find({ user: targetUserId })
             .populate('race', 'name date isRaceCompleted') // Incluye nombre, fecha y si la carrera está completada

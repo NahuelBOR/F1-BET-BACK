@@ -1,4 +1,3 @@
-// backend/server.js
 require('dotenv').config(); // Carga las variables de entorno desde .env
 
 const express = require('express');
@@ -13,6 +12,7 @@ const raceRoutes = require('./routes/races');
 const predictionRoutes = require('./routes/predictions');
 const userRoutes = require('./routes/users'); // Para obtener rankings y perfiles
 const raceResultRoutes = require('./routes/raceResults');
+const uploadRoutes = require('./routes/upload');
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -34,7 +34,10 @@ app.use('/api/auth', authRoutes); // Prefijo /api/auth para todas las rutas de a
 app.use('/api/races', raceRoutes); // Prefijo /api/races para rutas de carreras
 app.use('/api/predictions', predictionRoutes); // Prefijo /api/predictions para rutas de predicciones
 app.use('/api/users', userRoutes); // Prefijo /api/users para rutas de usuarios (ranking, perfil)
+app.use('/api/users', require('./routes/users'));
 app.use('/api/race-results', raceResultRoutes); //Prefijo /api/race-results ruta para resultados/cálculo de puntos
+app.use('/api/upload', uploadRoutes);
+
 
 
 // Ruta de prueba

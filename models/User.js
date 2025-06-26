@@ -25,9 +25,17 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    isAdmin: { // ¡Nuevo campo!
+    isAdmin: { 
         type: Boolean,
         default: false // Por defecto, los usuarios no son administradores
+    },
+    profilePicture: {
+        type: String,
+        default: 'https://res.cloudinary.com/dh3krohqz/image/upload/v1750893404/FPgenerica_avvayb.jpg'
+    },
+    preferredTeamTheme: { 
+        type: String,
+        default: 'default' // ID del equipo por defecto (nuestro rojo F1)
     },
     createdAt: {
         type: Date,
